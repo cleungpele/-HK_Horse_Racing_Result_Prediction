@@ -42,4 +42,4 @@ https://github.com/cleungpele/-HK_Horse_Racing_Result_Prediction/blob/main/src/P
 Refer to link:
 https://github.com/cleungpele/-HK_Horse_Racing_Result_Prediction/tree/main/src/sql
 ## Conclusions
-I only have two weeks to research and develop this project and prepare my presentation. After my presentation, I will continue to study my model to improve accuracy and make it better
+I have two weeks to research and develop this project and prepare my presentation. After my presentation, I will continue to study my model to improve accuracy and make it better
