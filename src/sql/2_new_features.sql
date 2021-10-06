@@ -246,7 +246,7 @@ update results set r_label =11 where CAST(r_finish_order as integer) >=10;
 update results set r_label =11 where CAST(r_finish_order as integer) =0;
 
 
-#### Another two new features ####
+#### Another new feature ####
 # 1.0 Jockey and Horse performance 
 create table fea_same_jh as
 SELECT a.r_lot_seq tg_lot_seq, a.r_date tg_date, 
@@ -279,40 +279,3 @@ WHERE   exists ( SELECT * FROM fea_same_jh i where i.tg_lot_seq = r_lot_seq and 
 # 1.3 set to value 0, if there is no historical record found
 UPDATE  results set (r_same_jh_1, r_same_jh_2, r_same_jh_3, r_same_jh_4, r_same_jh_x) =
 (0,0,0,0,0) WHERE r_same_jh_x is null;
-
-# 2.0 Jockey and Horse performance 
-create table fea_same_tj as
-SELECT tg_trainer,  tg_jockey, tg_same_tj_1, tg_same_tj_2,tg_same_tj_3, 
-       tg_same_tj_4, tg_same_tj_x, tg_same_tj_all, 
-       ROUND(CAST(tg_same_tj_1 as real) * 100 / cast(tg_same_tj_all as REAL),2)  as tg_same_tj_1_pct,
-       ROUND(CAST(tg_same_tj_2 as real) * 100 / cast(tg_same_tj_all as REAL),2)  as tg_same_tj_2_pct,
-       ROUND(CAST(tg_same_tj_3 as real) * 100 / cast(tg_same_tj_all as REAL),2)  as tg_same_tj_3_pct,
-       ROUND(CAST(tg_same_tj_4 as real) * 100 / cast(tg_same_tj_all as REAL),2)  as tg_same_tj_4_pct,
-       ROUND(CAST(tg_same_tj_x as real) * 100 / cast(tg_same_tj_all as REAL),2)  as tg_same_tj_x_pct
-FROM (
-select a.r_trainer as tg_trainer, a.r_jockey as tg_jockey,
-       SUM(CASE WHEN CAST(a.r_finish_order as integer)=1 THEN 1 ELSE 0 END) tg_same_tj_1,
-       SUM(CASE WHEN CAST(a.r_finish_order as integer)=2 THEN 1 ELSE 0 END) tg_same_tj_2,
-       SUM(CASE WHEN CAST(a.r_finish_order as integer)=3 THEN 1 ELSE 0 END) tg_same_tj_3,
-       SUM(CASE WHEN CAST(a.r_finish_order as integer)=4 THEN 1 ELSE 0 END) tg_same_tj_4,
-       SUM(CASE WHEN CAST(a.r_finish_order as integer) >4 THEN 1 ELSE 0 END) tg_same_tj_x,
-       COUNT(*)   as tg_same_tj_all
-FROM results a 
-WHERE CAST(a.r_finish_order as integer) between 1 and 14
-group by 1,2
-order by 1,2);
-
-# 2.1 Add new columns in table RESULTS
-alter table results add r_same_tj_1 real;
-alter table results add r_same_tj_2 real;
-alter table results add r_same_tj_3 real;
-alter table results add r_same_tj_4 real;
-alter table results add r_same_tj_x real;
-
-# 1.2 Update columns
-update  results set (r_same_tj_1, r_same_tj_2, r_same_tj_3, r_same_tj_4, r_same_tj_x) =
-       (SELECT tg_same_tj_1_pct, tg_same_tj_2_pct, tg_same_tj_3_pct, tg_same_tj_4_pct, tg_same_tj_x_pct 
-        FROM   fea_same_tj WHERE tg_trainer = r_trainer and tg_jockey= r_jockey)
-WHERE   exists ( SELECT * FROM fea_same_tj i where i.tg_trainer = r_trainer and i.tg_jockey= r_jockey );
-
-
