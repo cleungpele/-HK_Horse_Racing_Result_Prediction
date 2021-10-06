@@ -34,8 +34,12 @@ Based on the past three seasons (2018-2019, 2019-2020 and 2020-2021), I created 
 4. Past performance of each horse
 
 ## Training and Testing of model
+Refer to link:
+https://github.com/cleungpele/-HK_Horse_Racing_Result_Prediction/blob/main/src/Python
 
 
-
+## SQL Files
+Refer to link:
+https://github.com/cleungpele/-HK_Horse_Racing_Result_Prediction/tree/main/src/sql
 ## Conclusions
-I only have two weeks to research and develop this project and prepare my presentation. After my presentation, I will continue to study my model to improve accuracy and make it bette
+I only have two weeks to research and develop this project and prepare my presentation. After my presentation, I will continue to study my model to improve accuracy and make it better
