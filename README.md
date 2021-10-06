@@ -16,7 +16,7 @@ matplotlib
 
 seaborn
 
-tensorflow
+TensorFlow
 
 SQLite (DB)
 
