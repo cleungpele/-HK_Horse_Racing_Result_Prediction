@@ -44,7 +44,7 @@ https://github.com/cleungpele/-HK_Horse_Racing_Result_Prediction/tree/main/src/s
 
 ## Test Results
 The accuracy of predicting the winning horse is 12.5%. Refer to the link for details:
-https://github.com/cleungpele/-HK_Horse_Racing_Result_Prediction/tree/main/??
+https://github.com/cleungpele/-HK_Horse_Racing_Result_Prediction/tree/main/output
 
 ## Conclusions
 My model has an accuracy of 12.5%, which is acceptable. Because I only have two weeks to research and develop this project and prepare my presentation. After my presentation, I will continue to study my model to improve accuracy and make it better
