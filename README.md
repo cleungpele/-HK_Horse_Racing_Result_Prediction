@@ -25,11 +25,11 @@ sql
 ## New Features
 Based on the past three seasons (2018-2019, 2019-2020 and 2020-2021), I created some new features for my model as follows:
 
-1. Trainer’s winning percentage 
+1. Trainer’s winning rate
 
-2. Jockey’s winning percentage
+2. Jockey’s winning rate
 
-3. Win percentage of different draw
+3. Winning rate of different draws
 
 4. Past performance of each horse
 
